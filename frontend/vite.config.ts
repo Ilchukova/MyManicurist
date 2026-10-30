@@ -4,6 +4,7 @@ import path from "node:path";
 import process from "node:process";
 
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS === "true" ? "/MyManicurist/" : "/",
   plugins: [react()],
   resolve: {
     alias: {
