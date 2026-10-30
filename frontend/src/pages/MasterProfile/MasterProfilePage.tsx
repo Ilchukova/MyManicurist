@@ -1,0 +1,11 @@
+import { Link, useParams } from "react-router-dom";
+import { findSimilarMasters, masters } from "../../data/mock";
+import Carousel from "../../components/Carousel";
+import MasterCard from "../../components/MasterCard";
+
+export default function MasterProfilePage() {
+  const { id } = useParams(); const master = masters.find((m) => m.id === id);
+  if (!master) return <div className="shell page"><div className="empty-state">Мастер не найден.</div></div>;
+  const similar = master.status === "unavailable" ? findSimilarMasters(master, masters) : [];
+  return <div className="shell page profile-page"><Link to="/catalog" className="back-link">← Назад к каталогу</Link><div className="profile-grid"><Carousel items={master.portfolio} /><div className="profile-info"><div className="profile-kicker">{master.district} · мастер маникюра</div><h1>{master.name}</h1><div className="profile-rating"><span>★ {master.rating}</span><span>{master.reviewCount} отзывов</span></div><p className="profile-bio">{master.bio}</p><div className="tag-row">{master.styleTags.map((t) => <span className="tag" key={t}>{t}</span>)}</div><div className="service-box"><div className="service-box-title">Услуги и цены</div>{master.services.map((s) => <div className="service-row" key={s.id}><div><strong>{s.name}</strong><span>{s.durationMin} мин</span></div><strong>{s.price.toLocaleString("ru-RU")} ₽</strong></div>)}</div>{master.status === "active" ? <Link to={`/masters/${master.id}/book`} className="btn btn-primary full">Записаться онлайн →</Link> : <button className="btn btn-muted full" disabled>Сейчас нет свободных записей</button>}</div></div><section className="reviews"><div className="section-head"><div><div className="eyebrow">Отзывы клиентов</div><h2>Что говорят <em>о мастере</em></h2></div></div><div className="review-grid">{master.reviews.map((r) => <article className="review" key={r.id}><div className="review-top"><strong>{r.author}</strong><span>★★★★★</span></div><p>{r.text}</p></article>)}</div></section>{similar.length > 0 && <section className="section"><div className="section-head"><div><div className="eyebrow">Похожий стиль</div><h2>Мастера, которых стоит <em>посмотреть</em></h2></div></div><div className="card-grid">{similar.map((m) => <MasterCard key={m.id} master={m} />)}</div></section>}</div>;
+}

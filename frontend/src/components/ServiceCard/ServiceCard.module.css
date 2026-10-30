@@ -1,0 +1,1 @@
+.card{width:100%;display:flex;justify-content:space-between;text-align:left;gap:16px;padding:15px 16px;border:1px solid #eadbdc;border-radius:16px;background:#fff;color:#4b2731;cursor:pointer}.card span{display:flex;flex-direction:column;gap:5px}.card small{color:#98767e}.selected{border-color:#7c3147;box-shadow:0 0 0 2px rgba(124,49,71,.08)}

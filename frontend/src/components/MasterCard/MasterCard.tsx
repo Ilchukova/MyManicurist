@@ -1,0 +1,4 @@
+import { Link } from "react-router-dom";
+import type { Master } from "../../types";
+import styles from "./MasterCard.module.css";
+export default function MasterCard({ master }: { master: Master }){return <article className={styles.card}><img src={master.avatar} alt={master.name} className={styles.avatar}/><div className={styles.body}><div className={styles.top}><div><h3>{master.name}</h3><p>{master.district} · ★ {master.rating}</p></div><span className={master.status === "active" ? styles.active : styles.muted}>{master.status === "active" ? "Свободна" : "Занята"}</span></div><p className={styles.bio}>{master.bio}</p><div className={styles.tags}>{master.styleTags.slice(0,3).map(tag=><span key={tag}>{tag}</span>)}</div><div className={styles.bottom}><span>от {Math.min(...master.services.map(s=>s.price))} ₽</span><Link to={`/masters/${master.id}`}>Смотреть мастера</Link></div></div></article>}

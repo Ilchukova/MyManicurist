@@ -1,0 +1,42 @@
+﻿# Node.js
+node_modules/
+
+# Сборка
+backend/dist/
+frontend/dist/
+
+# Prisma
+backend/src/generated/prisma/
+
+# Логи
+*.log
+logs/
+
+# Файлы окружения и секреты
+.env
+**/.env
+**/.env.*
+
+# Разрешаем безопасные примеры и настройки Vite
+!.env.example
+!**/.env.example
+!.env.production
+!**/.env.production
+!.env.development
+!**/.env.development
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Кеш Vite
+.vite/
+**/.vite/
