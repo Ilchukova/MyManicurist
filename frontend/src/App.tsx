@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { AppStoreProvider } from "./store";
@@ -7,7 +7,7 @@ import "./assets/styles/global.css";
 
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <HashRouter>
       <AppStoreProvider>
         <div className="app-shell">
           <Header />
@@ -17,6 +17,6 @@ export default function App() {
           <Footer />
         </div>
       </AppStoreProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
