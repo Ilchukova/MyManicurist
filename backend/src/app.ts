@@ -40,6 +40,7 @@ export async function buildApp() {
 
   await app.register(cors, {
     origin: [
+      /^https:\/\/ilchukova\.github\.io$/,
       /^http:\/\/localhost:\d+$/,
       /^http:\/\/127\.0\.0\.1:\d+$/,
     ],
